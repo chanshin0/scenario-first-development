@@ -1,6 +1,6 @@
 ---
 name: scenario-first-goal
-description: 시나리오-First 개발 4단계. spec + 누적 GWT 시나리오를 게이트로 두고 goal-directed agentic loop을 실행한다. 1차 게이트는 GWT의 E2E 자동 변환(Playwright 등 — init이 결정), 2차 fallback은 LLM judge(`.harness/judge-rubric.md`), manual은 5단계로 분리. 누적 풀은 `.harness/REGRESSION-POLICY.md` 의 통과 조건 (`review_status: passed`) 만 포함. 진전 신호 3종(STUCK_RETRIES / NO_PROGRESS / MAX_ITERATIONS) 으로 thrashing 방지. UI 구현 시 `design/design.md` 가 있으면 그 외관 토큰을 따른다(soft guide — 게이트 아님, 첫 구현부터 일관성). `design/` 에 토큰 파일이 있으면 코드는 거기서 import.
+description: 시나리오-First 개발 4단계. spec + 누적 GWT 시나리오를 게이트로 두고 goal-directed agentic loop을 실행한다. 1차 게이트는 GWT의 E2E 자동 변환(Playwright 등 — init이 결정), 2차 fallback은 LLM judge(`.harness/judge-rubric.md`), manual은 5단계로 분리. 누적 풀은 `.harness/REGRESSION-POLICY.md` 의 통과 조건 (`review_status: passed`) 만 포함. 진전 신호 3종(STUCK_RETRIES / NO_PROGRESS / MAX_ITERATIONS) 으로 thrashing 방지. UI 구현 시 `design/tokens.md`(값 SoT)를 읽어 스택 맞는 토큰 코드(:root/@theme)를 생성·import 하고 `design/design.md`(톤)를 따른다(soft guide — 게이트 아님).
 ---
 
 # scenario-first-goal
@@ -98,7 +98,12 @@ LLM judge fallback 대상으로 마킹 (`@llm-judge` 태그 또는 별도 디렉
 
 spec의 PRD + ARCH + NONFUNC + OPS를 읽고 구현 1차 시도:
 - ARCH의 결정 lock 표 준수
-- UI 코드는 `design/design.md` 가 있으면 그 외관 토큰(색·간격·폰트·radius·tone)을 따름 — **soft guide, 게이트 아님**. 게이트는 여전히 행동(GWT E2E green). 첫 구현부터 외관을 일관시켜 사후 tweak 부담을 줄인다. `design/` 에 토큰 파일(`tokens.css`/`theme.css`/`tokens.md` 중 1개)이 있으면 그게 값의 출처 — **거기서 import, 하드코딩 금지**. (`design/design.md` 없으면 무시하고 진행)
+- **외관 토큰 (soft guide, 게이트 아님 — 게이트는 여전히 행동 GWT E2E green):**
+  - `design/tokens.md`(값 SoT)가 있으면 → 스택에 맞는 토큰 코드를 **생성**한다: 순수 CSS면 `design/tokens.css`(`:root { --accent: … }`), Tailwind v4면 `design/theme.css`(`@theme`). 생성물 상단에 "tokens.md 에서 생성됨 — 직접 편집 금지" 주석.
+  - 진입 CSS(예: `src/index.css`)에서 그 생성물을 `@import` 하고, UI 코드는 **`var(--accent)` 등 변수만 쓴다 — 값 하드코딩 금지**.
+  - `design/design.md`(톤·원칙)를 따른다.
+  - 생성물은 **파생** — 직접 안 고침. tokens.md 가 바뀌면 재생성. (goal 호출 시 동작 — 자동 발동 아님)
+  - (`design/tokens.md` 없으면 무시하고 진행)
 - walking skeleton 순서대로
 - 가장 작은 단위 commit (각 walking skeleton = 1 commit, `.gitmessage` 규약 따름)
 

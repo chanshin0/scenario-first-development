@@ -98,7 +98,7 @@ rm -f README.md                          # SFD 방법론 설명서 (네 프로�
 
 **제거 안 함** (전부 그대로 쓰는 자산): `.claude/skills/`·`.claude/agents/`·`.harness/`·`scenarios/`·`tests/e2e/`·`init.sh`·`.gitmessage`·`rules.json`·`AGENTS.md`·`CLAUDE.md`·`.env.scenario.example`·`design/`. `scenarios/`·`tests/e2e/` 는 `.gitkeep` 만 있어 비울 것 없음.
 
-> `design/` 는 README 와 달리 **제거 안 함** — SFD 방법론 설명서가 아니라 네 서비스의 외관 자산이다. `design/design.md` 안의 예시 토큰(accent/spacing 등)을 네 서비스 값으로 교체해서 쓴다 (goal·tweak 이 참조). 스택을 정하면 `design/` 에 토큰 파일(`tokens.css`/`theme.css`/`tokens.md` 중 1개)을 두고 값을 거기로 옮긴다. 토큰 편집·토큰 파일 생성 모두 프로젝트 작업 (sfd-architect 통로 밖).
+> `design/` 는 README 와 달리 **제거 안 함** — SFD 방법론 설명서가 아니라 네 서비스의 외관 자산이다. `design/design.md`(톤·원칙)와 `design/tokens.md`(값 SoT)의 v0 예시를 네 서비스 것으로 교체한다. goal 이 tokens.md 를 읽어 스택 맞는 코드(`tokens.css` :root / `theme.css` @theme)를 생성하고 tweak 이 참조. 톤·값 편집은 프로젝트 작업 (sfd-architect 통로 밖).
 
 ### 5. git 후속
 

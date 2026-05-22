@@ -184,8 +184,9 @@ my-project/
 ├── .gitmessage          # walking skeleton commit 규약
 │
 ├── design/                          ← 외관 자산 (프로젝트, 게이트 아님)
-│   ├── design.md                    # 토큰 narrative — goal 준수, tweak 인용
-│   └── (선택) tokens.css | theme.css | tokens.md   # 토큰 파일 1개 = 값
+│   ├── design.md                    # 말 — 톤·원칙
+│   ├── tokens.md                    # 값 (단일 SoT — 네가 편집)
+│   └── tokens.css | theme.css       # goal 이 tokens.md 에서 생성 (직접 편집 금지)
 │
 ├── scenarios/                       ← SoT (시나리오 본문, 가시)
 │   ├── throws/NNN-*.md

@@ -1,37 +1,35 @@
 <!--
-design/design.md — 프로젝트 외관 자산 (네 서비스 소속, SFD 하네스 아님).
+design/design.md — 프로젝트 외관의 '말'(원칙·톤·이유). 네 서비스 소속, SFD 하네스 아님.
+
+  이 폴더(design/)의 분업:
+  - design.md  = 말   : 왜 이렇게, 어떤 톤, 언제 뭘 쓰나 (사람·Claude 가 읽고 판단)
+  - tokens.md  = 값   : 색·간격·radius 등 숫자의 단일 SoT (네가 편집하는 원본)
+  - tokens.css/theme.css = 생성물 : goal 이 tokens.md 에서 스택 맞춰 만든 코드 (직접 편집 금지)
 
   정체성:
   - behavior 와 직교하는 외관 축. SoT(=scenarios/ Job Story) 는 그대로 — 이건 SoT 아님.
-    (아래·토큰 파일은 외관 '값'의 출처일 뿐, behavior SoT 아님.)
+    (tokens.md 는 외관 '값'의 SoT 일 뿐, behavior SoT 아님.)
   - 게이트 아님 (soft guide). 누적 게이트 풀에 안 들어감.
-  - goal(구현 시점)이 UI 코드를 쓸 때 이 토큰을 따르고, tweak(게이트2 시각 승인)이
-    이 토큰을 판정 기준으로 인용한다.
+  - goal(구현 시점)이 tokens.md 를 코드로 생성·사용하고, tweak(게이트2 시각 승인)이
+    design.md(톤)+tokens.md(값)를 판정 기준으로 인용한다.
 
   변경 규칙:
-  - 토큰 값 편집(아래 또는 토큰 파일) = 프로젝트 작업 (자유 — scenarios 편집과 동급, sfd-architect 통로 밖).
-  - goal/tweak 이 design/design.md 를 "어떻게 참조하는지"(메커니즘) 변경 = 하네스 → sfd-architect 통로.
+  - design.md 톤·원칙 / tokens.md 값 편집 = 프로젝트 작업 (자유 — scenarios 편집과 동급, 통로 밖).
+  - goal/tweak 이 이 파일들을 "어떻게 참조·생성하는지"(메커니즘) 변경 = 하네스 → sfd-architect 통로.
 -->
 
 # Design Language (v0)
 
-처음엔 최소로. 실제 구현에서 같은 결정이 반복될 때 한 줄씩 키운다 (과설계 금지 — 뭐가
-필요한지 모르는 상태에서 토큰을 미리 채우지 않는다). 아래 값은 예시 — 네 서비스에 맞게 교체.
+이 파일은 **말**이다 — 값(숫자)은 `tokens.md` 에 있다. 여긴 *왜 그렇게 정했나*, *어떤 톤인가*, *언제 뭘 쓰나* 만 적는다. 처음엔 최소로, 결정이 반복될 때 한 줄씩 키운다 (과설계 금지).
 
-- **accent**: `#2563eb`
-- **spacing**: `4px` 배수 (4 / 8 / 12 / 16 / 24)
-- **font**: `system-ui`, `16px` base
-- **radius**: `8px`
-- **tone**: 담백하게, 느낌표 자제
+## 톤 (시드 — 네 서비스에 맞게 교체)
 
-## 토큰 소스
+- 담백하게, 느낌표 자제.
+- accent 색은 주요 액션(주 버튼·링크)에만. 남발 금지.
+- 여백은 넉넉히 — 빽빽하게 채우지 않는다.
 
-이 `design/` 폴더 = **design.md(항상) + 토큰 파일 1개(선택)**. 토큰 파일은 스택 따라 셋 중 하나만:
+## 값은 어디에
 
-- 순수 CSS / 기타 → `tokens.css` (`:root { --accent: … }`)
-- Tailwind v4 → `theme.css` (`@theme`)
-- 코드 시작 전 → `tokens.md` (카탈로그)
+색·간격·폰트·radius 같은 **값은 `design/tokens.md`** 에 있다 (단일 원본). goal 이 그걸 읽어 스택에 맞는 코드(`tokens.css` :root / `theme.css` @theme)로 **생성**하고, 코드는 그 변수(`var(--accent)` 등)를 쓴다. 값을 바꾸려면 `tokens.md` 만 고치고 재생성 — design.md 에 값을 다시 적지 않는다 (중복 = 표류).
 
-값이 많아지면 토큰 파일을 만들고 위 값을 거기로 옮긴다 (코드가 import 하는 값의 진짜 출처). 그때부터 **값은 토큰 파일에만**, 이 design.md 는 의도·이유 + 아래 포인터만 (값 중복 = 표류).
-
-> **토큰 소스**: (아직 없음 — 위 목록이 값)
+> **생성물 위치**: (아직 없음 — goal 이 tokens.md 에서 생성)
