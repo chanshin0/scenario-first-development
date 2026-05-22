@@ -1,6 +1,6 @@
 ---
 name: scenario-first-goal
-description: 시나리오-First 개발 4단계. spec + 누적 GWT 시나리오를 게이트로 두고 goal-directed agentic loop을 실행한다. 1차 게이트는 GWT의 E2E 자동 변환(Playwright 등 — init이 결정), 2차 fallback은 LLM judge(`.harness/judge-rubric.md`), manual은 5단계로 분리. 누적 풀은 `.harness/REGRESSION-POLICY.md` 의 통과 조건 (`review_status: passed`) 만 포함. 진전 신호 3종(STUCK_RETRIES / NO_PROGRESS / MAX_ITERATIONS) 으로 thrashing 방지. UI 구현 시 루트 `design.md` 가 있으면 그 외관 토큰을 따른다(soft guide — 게이트 아님, 첫 구현부터 일관성).
+description: 시나리오-First 개발 4단계. spec + 누적 GWT 시나리오를 게이트로 두고 goal-directed agentic loop을 실행한다. 1차 게이트는 GWT의 E2E 자동 변환(Playwright 등 — init이 결정), 2차 fallback은 LLM judge(`.harness/judge-rubric.md`), manual은 5단계로 분리. 누적 풀은 `.harness/REGRESSION-POLICY.md` 의 통과 조건 (`review_status: passed`) 만 포함. 진전 신호 3종(STUCK_RETRIES / NO_PROGRESS / MAX_ITERATIONS) 으로 thrashing 방지. UI 구현 시 `design/design.md` 가 있으면 그 외관 토큰을 따른다(soft guide — 게이트 아님, 첫 구현부터 일관성). `design/` 에 토큰 파일이 있으면 코드는 거기서 import.
 ---
 
 # scenario-first-goal
@@ -98,7 +98,7 @@ LLM judge fallback 대상으로 마킹 (`@llm-judge` 태그 또는 별도 디렉
 
 spec의 PRD + ARCH + NONFUNC + OPS를 읽고 구현 1차 시도:
 - ARCH의 결정 lock 표 준수
-- UI 코드는 루트 `design.md` 가 있으면 그 외관 토큰(색·간격·폰트·radius·tone)을 따름 — **soft guide, 게이트 아님**. 게이트는 여전히 행동(GWT E2E green). 첫 구현부터 외관을 일관시켜 사후 tweak 부담을 줄인다. (design.md 없으면 무시하고 진행)
+- UI 코드는 `design/design.md` 가 있으면 그 외관 토큰(색·간격·폰트·radius·tone)을 따름 — **soft guide, 게이트 아님**. 게이트는 여전히 행동(GWT E2E green). 첫 구현부터 외관을 일관시켜 사후 tweak 부담을 줄인다. `design/` 에 토큰 파일(`tokens.css`/`theme.css`/`tokens.md` 중 1개)이 있으면 그게 값의 출처 — **거기서 import, 하드코딩 금지**. (`design/design.md` 없으면 무시하고 진행)
 - walking skeleton 순서대로
 - 가장 작은 단위 commit (각 walking skeleton = 1 commit, `.gitmessage` 규약 따름)
 

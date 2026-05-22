@@ -224,7 +224,7 @@ MVP·deepen 으로 동작이 정의된 뒤의 외관 다듬기(여백·문구·�
 - `.gitmessage` — walking skeleton commit 규약. 등록됨.
 - `.harness/rules.json` — 머신 판독 룰 (single_active_cycle, passing_requires_evidence, do_not_skip_verification, harness_change_via_architect 등). hook 으로 검증 가능.
 - 하네스 변경은 `sfd-architect` 통로 (룰 3.9). 기록은 commit message — 별도 ADR 파일 없음.
-- `design.md` (루트) — 프로젝트 외관 자산. behavior 직교 외관 축, **게이트 아님**(누적 풀 미진입). goal 이 UI 구현 시 따르고 tweak 게이트2가 rubric 으로 인용. 토큰 값 편집은 프로젝트 작업(sfd-architect 통로 밖), goal/tweak 의 참조 메커니즘 변경만 하네스.
+- `design/` (`design.md` + 선택 토큰 파일 1개) — 프로젝트 외관 자산. behavior 직교 외관 축, **게이트 아님**(누적 풀 미진입). goal 이 UI 구현 시 따르고 tweak 게이트2가 rubric 으로 인용. 토큰 값 편집·토큰 파일 생성은 프로젝트 작업(sfd-architect 통로 밖), goal/tweak 의 참조 메커니즘 변경만 하네스.
 - E2E 프레임워크: **{{E2E_FRAMEWORK}}** (실행: `./init.sh verify` 또는 직접 `{{E2E_TEST_CMD}}`)
 
 ## 6. 금지

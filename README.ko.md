@@ -182,7 +182,10 @@ my-project/
 ├── init.sh              # bootstrap / verify / start
 ├── .env.scenario        # 진전 신호 3종 + E2E 명령 (gitignore)
 ├── .gitmessage          # walking skeleton commit 규약
-├── design.md            # 외관 토큰 — goal 준수, tweak 인용 (프로젝트 자산, 게이트 아님)
+│
+├── design/                          ← 외관 자산 (프로젝트, 게이트 아님)
+│   ├── design.md                    # 토큰 narrative — goal 준수, tweak 인용
+│   └── (선택) tokens.css | theme.css | tokens.md   # 토큰 파일 1개 = 값
 │
 ├── scenarios/                       ← SoT (시나리오 본문, 가시)
 │   ├── throws/NNN-*.md
@@ -217,7 +220,7 @@ clone 직후 새 레포엔 **그대로 쓸 자산**과 **SFD 색이 묻은 부�
 |---|---|
 | `.claude/skills/` 7 스킬 + `agents/sfd-architect` | `AGENTS.md` 의 `{{PROJECT_NAME}}` 등 placeholder |
 | `.harness/` · 빈 `scenarios/`·`tests/e2e/` | `.env.scenario` 실파일 아직 없음 (`.example` 만) |
-| `init.sh` · `.gitmessage` · `rules.json` · `design.md` | 이 `README.md` (= SFD 방법론 설명서, 네 README 아님) |
+| `init.sh` · `.gitmessage` · `rules.json` · `design/` | 이 `README.md` (= SFD 방법론 설명서, 네 README 아님) |
 
 > SFD 가 이 템플릿을 진화시킨 기록은 **commit message** 에만 있다. `Use this template` 은 git 히스토리를 미상속하므로(clone 은 단일 fresh commit), 그 기록은 네 레포로 따라오지 않는다.
 

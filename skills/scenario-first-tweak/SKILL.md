@@ -1,6 +1,6 @@
 ---
 name: scenario-first-tweak
-description: 시나리오-First 개발 cosmetic 축 (post-MVP 1→n). 이미 동작하는 화면의 **행동 델타 없는 UI/UX 변경** — 여백·문구·색·정렬·폰트·마이크로 인터랙션 다듬기 — 를 위한 경량 트랙. Job Story·GWT 작성 없음. 게이트 1(자동) = 기존 누적 풀 green 유지(행동 안 바꿨다는 증명, 신규 게이트 아님), 게이트 2(수동) = 본인이 시각 결과를 직접 보고 루트 `design.md`(외관 토큰 rubric, 있으면) 대조해 evidence 승인. 누적 풀에 안 들어가고(새 NNN 아님) cycle lock 도 점유 안 한다. 핵심 구별: 새 GWT(Then 단언)를 쓸 수 있으면 deepen(행동), 못 쓰면 tweak(외관). tweak 이 풀을 깨면 사실 행동을 바꾼 것 → deepen/throw 로 승격.
+description: 시나리오-First 개발 cosmetic 축 (post-MVP 1→n). 이미 동작하는 화면의 **행동 델타 없는 UI/UX 변경** — 여백·문구·색·정렬·폰트·마이크로 인터랙션 다듬기 — 를 위한 경량 트랙. Job Story·GWT 작성 없음. 게이트 1(자동) = 기존 누적 풀 green 유지(행동 안 바꿨다는 증명, 신규 게이트 아님), 게이트 2(수동) = 본인이 시각 결과를 직접 보고 `design/design.md`(외관 토큰 rubric, 있으면) 대조해 evidence 승인. 누적 풀에 안 들어가고(새 NNN 아님) cycle lock 도 점유 안 한다. 핵심 구별: 새 GWT(Then 단언)를 쓸 수 있으면 deepen(행동), 못 쓰면 tweak(외관). tweak 이 풀을 깨면 사실 행동을 바꾼 것 → deepen/throw 로 승격.
 ---
 
 # scenario-first-tweak
@@ -85,7 +85,8 @@ UI/스타일 코드 수정. 가장 작은 단위 commit (`.gitmessage` 규약). 
 ### 4. 게이트 2 (수동) — 본인 시각 승인
 
 변경 자체(외관이 의도대로 됐나)는 자동으로 판정 불가 — 본인이 직접 본다:
-- 판정 기준 = 루트 `design.md` (있으면). "예쁜가?"(직감) 가 아니라 "design.md 토큰에 맞나?"(written rubric). 색·간격·폰트·radius·tone 을 design.md 와 대조. design.md 없으면 직감 판정으로 fallback (단 그 경우 일관성 표류 위험 — design.md 를 두는 걸 권장).
+- 판정 기준 = `design/design.md` (있으면). "예쁜가?"(직감) 가 아니라 "design.md 토큰에 맞나?"(written rubric). 색·간격·폰트·radius·tone 을 design.md 와 대조. design.md 없으면 직감 판정으로 fallback (단 그 경우 일관성 표류 위험 — design.md 를 두는 걸 권장).
+- `design/` 에 토큰 파일이 있으면, 매직넘버(`#0d6efd` 직박) 아니라 토큰 변수(`var(--accent)` 등)를 썼는지도 본다 — **soft warn 만** (import 그래프 머신 판정 없어 hard block 불가; 매핑 생기면 승격, SKILL §5 표면-커버리지 전례와 동일 톤). 게이트 신설 아님 — 게이트2 rubric 항목 확장.
 - 스크린샷 / 전후 비교 / 실제 화면 확인.
 - evidence 를 `scenarios/tweaks/<날짜>-<slug>.md` 에 기록 (`.harness/templates/REVIEW.md` 의 evidence 슬롯 양식 차용 — 최소 1개 시각 evidence + 어느 design.md 토큰을 충족했는지 인용).
 - **evidence 없이 tweak 완료 표시 금지** (review 의 passing_requires_evidence 와 같은 강도).
