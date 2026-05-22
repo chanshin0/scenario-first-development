@@ -181,6 +181,7 @@ my-project/
 ├── init.sh              # bootstrap / verify / start
 ├── .env.scenario        # 3 progress signals + E2E command (gitignore)
 ├── .gitmessage          # walking-skeleton commit convention
+├── design.md            # visual tokens — goal follows, tweak cites (project asset, non-gate)
 │
 ├── scenarios/                       ← SoT (scenario bodies, visible)
 │   ├── throws/NNN-*.md
@@ -215,7 +216,7 @@ A fresh clone mixes **assets you keep** with **SFD's own residue**:
 |---|---|
 | `.claude/skills/` 7 skills + `agents/sfd-architect` | placeholders in `AGENTS.md` (`{{PROJECT_NAME}}`, …) |
 | `.harness/` · empty `scenarios/` · `tests/e2e/` | `.env.scenario` not yet created (only `.example`) |
-| `init.sh` · `.gitmessage` · `rules.json` | this `README.md` (= SFD's methodology doc, not yours) |
+| `init.sh` · `.gitmessage` · `rules.json` · `design.md` | this `README.md` (= SFD's methodology doc, not yours) |
 
 > SFD's record of evolving this template lives **only in commit messages**. "Use this template" does not carry git history (your clone starts as a single fresh commit), so that record never follows you downstream.
 

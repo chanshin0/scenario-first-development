@@ -96,7 +96,9 @@ clone 사본에 묻어온 SFD **자신의** 것 — 새 프로젝트 것 아님:
 rm -f README.md                          # SFD 방법론 설명서 (네 프로젝트 README 아님)
 ```
 
-**제거 안 함** (전부 그대로 쓰는 자산): `.claude/skills/`·`.claude/agents/`·`.harness/`·`scenarios/`·`tests/e2e/`·`init.sh`·`.gitmessage`·`rules.json`·`AGENTS.md`·`CLAUDE.md`·`.env.scenario.example`. `scenarios/`·`tests/e2e/` 는 `.gitkeep` 만 있어 비울 것 없음.
+**제거 안 함** (전부 그대로 쓰는 자산): `.claude/skills/`·`.claude/agents/`·`.harness/`·`scenarios/`·`tests/e2e/`·`init.sh`·`.gitmessage`·`rules.json`·`AGENTS.md`·`CLAUDE.md`·`.env.scenario.example`·`design.md`. `scenarios/`·`tests/e2e/` 는 `.gitkeep` 만 있어 비울 것 없음.
+
+> `design.md` 는 README 와 달리 **제거 안 함** — SFD 방법론 설명서가 아니라 네 서비스의 외관 자산이다. 안의 예시 토큰(accent/spacing 등)을 네 서비스 값으로 교체해서 쓴다 (goal·tweak 이 참조). 토큰 편집은 프로젝트 작업 (sfd-architect 통로 밖).
 
 ### 5. git 후속
 
