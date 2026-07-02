@@ -15,3 +15,7 @@
 # - default: commit (regression 누적용)
 # - 무시하려면 아래 주석 해제
 # tests/e2e/scenario-*/
+
+# === 도그푸딩 (머신 로컬, clone 미상속) ===
+.claude/settings.local.json
+.claude/hooks/dogfood-inbox-surface.sh
